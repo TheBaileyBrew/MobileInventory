@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="array_model_types">
+        <item>@string/please_choose_one</item>
+        <item>@string/customer_type</item>
+        <item>@string/sales_type</item>
+    </string-array>
+
+    <string-array name="array_inventory_types">
+        <item>@string/please_choose_one</item>
+        <item>@string/new_type</item>
+        <item>@string/used_type</item>
+        <item>@string/test_type</item>
+    </string-array>
+
+</resources>

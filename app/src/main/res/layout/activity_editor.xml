@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp"
+    tools:context=".CatalogDisplay">
+    <LinearLayout
+        android:id="@+id/device_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:paddingTop="16dp"
+            android:layout_height="match_parent"
+            />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:paddingLeft="6dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <EditText
+                android:id="@+id/model_name_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Device Model"
+                android:inputType="textCapWords"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textAppearance="?android:textAppearanceMedium"/>
+            <EditText
+                android:id="@+id/model_serial_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Serial Number"
+                android:inputType="textCapWords"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textAppearance="?android:textAppearanceMedium"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/device_details"
+        android:layout_marginTop="16dp">
+        <Spinner
+            android:id="@+id/model_usage_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:inputType="textCapWords"
+            android:fontFamily="sans-serif-smallcaps"
+            android:textAppearance="?android:textAppearanceMedium"/>
+        <Spinner
+            android:id="@+id/model_inventory_type_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:inputType="textCapWords"
+            android:fontFamily="sans-serif-smallcaps"
+            android:textAppearance="?android:textAppearanceMedium"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textStyle="bold"
+                tools:text="NEW"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textStyle="bold"
+                tools:text="USED"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textStyle="bold"
+                tools:text="TEST"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp">
+            <TextView
+                android:id="@+id/display_quantity_new"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAccent"
+                tools:text="7"/>
+            <TextView
+                android:id="@+id/display_quantity_used"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAccent"
+                tools:text="3"/>
+            <TextView
+                android:id="@+id/display_quantity_test"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorAccent"
+                tools:text="4"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/user_details_history"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp">
+            <TextView
+                android:id="@+id/added_by_user"
+                android:text="Added By: "
+                android:textAppearance="?android:textAppearanceSmall"
+                android:fontFamily="sans-serif-smallcaps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/added_user_name"
+                android:layout_toRightOf="@id/added_by_user"
+                android:text="Matthew Bailey"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textColor="@color/colorAccent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp">
+            <TextView
+                android:id="@+id/added_on_date"
+                android:text="Added On: "
+                android:textAppearance="?android:textAppearanceSmall"
+                android:fontFamily="sans-serif-smallcaps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/added_user_date"
+                android:layout_toRightOf="@id/added_on_date"
+                android:text="01 / 01 / 2018"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textColor="@color/colorAccent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp">
+            <TextView
+                android:id="@+id/updated_by_user"
+                android:text="Last Update: "
+                android:textAppearance="?android:textAppearanceSmall"
+                android:fontFamily="sans-serif-smallcaps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/updated_user_name_date"
+                android:layout_toRightOf="@id/updated_by_user"
+                android:text="M. Bailey / 01/01/18"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:fontFamily="sans-serif-smallcaps"
+                android:textColor="@color/colorAccent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

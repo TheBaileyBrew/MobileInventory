@@ -1,5 +1,6 @@
 package com.thebaileybrew.mobileinventory;
 
+import android.animation.Animator;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.thebaileybrew.mobileinventory.data.InventoryDbHelper;
@@ -16,24 +18,39 @@ import com.thebaileybrew.mobileinventory.data.MobileContract;
 
 import static com.thebaileybrew.mobileinventory.data.MobileContract.*;
 
-public class CatalogDisplay extends AppCompatActivity {
+public class CatalogDisplay extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = CatalogDisplay.class.getSimpleName();
 
     private InventoryDbHelper mDbHelper;
+    Boolean isFABOpen = false;
+    FloatingActionButton menuFab;
+    FloatingActionButton addInventoryFab;
+    FloatingActionButton deviceRequestFab;
+    FloatingActionButton returnToStockFab;
+    LinearLayout addLayout, requestLayout, returnLayout;
+    TextView addText, requestText, returnText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catalog_display);
+        addLayout = findViewById(R.id.add_layout);
+        addText = findViewById(R.id.dev_add_new_text);
+        returnLayout = findViewById(R.id.return_layout);
+        returnText = findViewById(R.id.dev_return_equip_text);
+        requestLayout = findViewById(R.id.request_layout);
+        requestText = findViewById(R.id.dev_request_text);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent addDevice = new Intent(CatalogDisplay.this, EditorDisplay.class);
-                startActivity(addDevice);
-            }
-        });
+        menuFab = findViewById(R.id.dev_fab_menu); //Default Menu FAB
+        addInventoryFab = findViewById(R.id.dev_add_new); //Add inventory to stock
+        deviceRequestFab = findViewById(R.id.dev_request); //Request Device
+        returnToStockFab = findViewById(R.id.dev_return_equip); //Return equipment to stock
+
+        menuFab.setOnClickListener(this);
+        addInventoryFab.setOnClickListener(this);
+        deviceRequestFab.setOnClickListener(this);
+        returnToStockFab.setOnClickListener(this);
+
 
         mDbHelper = new InventoryDbHelper(this);
     }
@@ -131,6 +148,104 @@ public class CatalogDisplay extends AppCompatActivity {
 
     }
 
+    private void showFABMenu() {
+        isFABOpen = true;
+        addLayout.setVisibility(View.VISIBLE);
+        requestLayout.setVisibility(View.VISIBLE);
+        returnLayout.setVisibility(View.VISIBLE);
+
+        menuFab.animate().rotationBy(90);
+        menuFab.animate().scaleX((float) 1.25);
+        menuFab.animate().scaleY((float) 1.25);
+        addLayout.animate().translationY(-getResources().getDimension(R.dimen.standard_50));
+        requestLayout.animate().translationY(-getResources().getDimension(R.dimen.standard_100));
+        returnLayout.animate().translationY(-getResources().getDimension(R.dimen.standard_150)).setListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+                addText.setVisibility(View.INVISIBLE);
+                returnText.setVisibility(View.INVISIBLE);
+                requestText.setVisibility(View.INVISIBLE);
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                addText.setVisibility(View.VISIBLE);
+                returnText.setVisibility(View.VISIBLE);
+                requestText.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
+
+    }
+    private void closeFABMenu() {
+        isFABOpen = false;
+
+        menuFab.animate().rotationBy(-270);
+        addLayout.animate().translationY(0);
+        requestLayout.animate().translationY(0);
+        returnLayout.animate().translationY(0).setListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                if(!isFABOpen) {
+                    addLayout.setVisibility(View.GONE);
+                    requestLayout.setVisibility(View.GONE);
+                    returnLayout.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
 
 
+
+    }
+
+
+    /**
+     * Called when a view has been clicked.
+     *
+     * @param v The view that was clicked.
+     */
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.dev_fab_menu:
+                if(!isFABOpen) {
+                    showFABMenu();
+                } else {
+                    closeFABMenu();
+                }
+                break;
+            case R.id.dev_add_new:
+                Intent addDevice = new Intent(CatalogDisplay.this, EditorDisplay.class);
+                startActivity(addDevice);
+                break;
+            case R.id.dev_return_equip:
+                break;
+            case R.id.dev_request:
+                break;
+        }
+    }
 }

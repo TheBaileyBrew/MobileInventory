@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="16dp"
@@ -24,6 +25,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <EditText
+                style="@style/EditTextTheme"
                 android:id="@+id/model_name_edittext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -32,6 +34,7 @@
                 android:fontFamily="sans-serif-smallcaps"
                 android:textAppearance="?android:textAppearanceMedium"/>
             <EditText
+                style="@style/EditTextTheme"
                 android:id="@+id/model_serial_edittext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -101,7 +104,7 @@
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorHint"
                 tools:text="7"/>
             <TextView
                 android:id="@+id/display_quantity_used"
@@ -109,7 +112,7 @@
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorHint"
                 tools:text="3"/>
             <TextView
                 android:id="@+id/display_quantity_test"
@@ -117,7 +120,7 @@
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorHint"
                 tools:text="4"/>
         </LinearLayout>
     </LinearLayout>

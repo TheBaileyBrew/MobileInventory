@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp">
+    <LinearLayout
+        android:id="@+id/device_date_display"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/user_change_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:textSize="16sp"
+            android:layout_marginRight="16dp"/>
+        <TextView
+            android:id="@+id/user_history_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
+            android:text="01/01/1980"
+            android:textSize="16sp"
+            android:layout_marginRight="16dp"/>
+        <TextView
+            android:id="@+id/user_history_record"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
+            android:text="Matthew Bailey"
+            android:textSize="16sp"
+            android:layout_marginRight="16dp"/>
+    </LinearLayout>
+    <view
+        android:id="@+id/history_break"
+        android:layout_width="175dp"
+        android:layout_height="1dp"
+        app:layout_constraintTop_toBottomOf="@id/device_date_display"
+        android:layout_marginTop="4dp"
+        android:background="@color/colorPrimaryDark"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/history_break">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="STATUS CHANGE"
+            android:textSize="14sp"
+            android:layout_marginRight="16dp"/>
+        <TextView
+            android:id="@+id/user_change_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
+            android:text="RETURN (USED)"
+            android:textSize="14sp"/>
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>

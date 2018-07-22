@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".CatalogDisplay"
             android:label="Inventory">
             <intent-filter>
@@ -16,6 +17,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".EditorDisplay"
             android:label="Update Inventory"
             android:parentActivityName=".CatalogDisplay">
@@ -23,6 +25,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".CatalogDisplay"/>
         </activity>
+
+        <activity android:name=".RequestDisplay"
+            android:label="Request Device"
+            android:parentActivityName=".CatalogDisplay">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".CatalogDisplay"/>
+        </activity>
+
     </application>
 
 </manifest>
